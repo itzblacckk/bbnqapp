@@ -1,0 +1,10 @@
+/* This file adds the requisite utility classes for Tailwind to work. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--primaryBackground: #2eaf7d;
+	--primaryForeground: #c1f6ed;
+	--secondaryColor: #02353c;
+}
