@@ -15,19 +15,19 @@ const HomePage = () => {
   const cards = [
     {
       id: 1,
-      imageUri: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.qu-z17y2ob_PwDhOWW3MYgHaEK%26pid%3DApi&f=1&ipt=f374ef73285ed6e1f612a9beafab0a4d7931577f1c3cf298654072aa0b5743a4&ipo=images',
+      imageUri: 'https://img.freepik.com/free-vector/graphic-design-geometric-wallpaper_52683-34399.jpg?size=626&ext=jpg&ga=GA1.1.1311217063.1713921632&semt=sph',
       title: 'Card 1 Title',
       content: 'Content for Card 1...',
     },
     {
       id: 2,
-      imageUri: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.ioQI1NlT-ynIqZPjUzWZlQHaEo%26pid%3DApi&f=1&ipt=7897f4c26b228522228cd096f4d8baa8892adef2e33668393a9f73ce0460815d&ipo=images',
+      imageUri: 'https://img.freepik.com/free-vector/flat-design-polygonal-background_23-2148898663.jpg?w=1380&t=st=1716299695~exp=1716300295~hmac=e6d694d0658f8d880e304ff7887bf9bb448284614faf860f32172c39d6ed9110',
       title: 'Card 2 Title',
       content: 'Content for Card 2...',
     },
     {
       id: 3,
-      imageUri: 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.sSQ6i6dsz2YQkpcEpej0HAHaDi%26pid%3DApi&f=1&ipt=ab8a30821ccf05a92f84a57855fc25ade12a6170de4c4fc4528b476d182b635d&ipo=images',
+      imageUri: 'https://img.freepik.com/free-vector/flat-geometric-poster_1361-4216.jpg?w=1380&t=st=1716299744~exp=1716300344~hmac=2d63f00d0fdeb74e5e7ec32b43e7e3c1f0e1748087c2d0a41ea057073c4678f9',
       title: 'Card 3 Title',
       content: 'Content for Card 3...',
     },
@@ -37,7 +37,6 @@ const HomePage = () => {
   return (
     <View  style={styles.container}>
       <View style={styles.header}>
-    
         <TouchableOpacity onPress={toggleSidebar} style={{ display: 'flex', alignContent: 'center', height: 40, }}>
           <EvilIcons name="navicon" size={40} color="black" />
         </TouchableOpacity>
@@ -102,15 +101,15 @@ const HomePage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
-  
+    // backgroundColor: 'black',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
-    top:20,
+    top:0,
+    zIndex: 100,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
     backgroundColor: '#5de65d',
@@ -127,10 +126,9 @@ const styles = StyleSheet.create({
     color: 'green', 
   },
   content: {
-    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 10,
+    gap: 15,
   },
   title: {
     fontSize: 24,
@@ -145,6 +143,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: '90%',
     height: '30%',
+    shadowOffset: { width: 2.5, height: 2 },
+    shadowColor: '#000',
+    shadowRadius: 20,
+    shadowOpacity: 30,
   },
   cardImage: {
     width: '100%',
@@ -155,7 +157,6 @@ const styles = StyleSheet.create({
   cardContent: {
     display: 'flex',
     flexDirection: 'column',
-
   },
   cardTitle: {
     fontSize: 18,
@@ -167,12 +168,12 @@ const styles = StyleSheet.create({
   },
   sidebar: {
     position: 'absolute',
-    top: 0,
+    top: 60,
     bottom: 0,
     left: 0,
     width: '80%', 
     backgroundColor: '#5de65d', 
-    zIndex: 1,
+    zIndex: 150,
     padding: 20,
     display: 'flex',
     alignContent: 'center',
