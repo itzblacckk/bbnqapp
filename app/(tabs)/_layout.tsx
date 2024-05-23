@@ -1,10 +1,11 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import { View } from 'react-native';
+import AnimatedNav from '@/components/navigation/NavbarAnimated';
+import { Colors } from '@/constants/Colors';
+import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import AnimatedNavOne from '@/components/navigation/NavAniOne';
+import AnimatedNavTwo from '@/components/navigation/NavAniTwo';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -17,12 +18,13 @@ export default function TabLayout() {
         tabBarShowLabel: false, 
         tabBarStyle:{
           height: 60,
-          borderRadius: 20,
-          margin: 10,
-          shadowOffset: { width: 0, height: 5 },
-          shadowColor: '#000',
-          shadowRadius: 10,
-          shadowOpacity: 30,
+          // margin: 10,
+          // shadowOffset: { width: 0, height: 5 },
+          // shadowColor: '#000',
+          // shadowRadius: 10,
+          // shadowOpacity: 30,
+          backgroundColor: '#00215e', 
+          // '#4171ee',
         } 
       }}>
       <Tabs.Screen
@@ -30,10 +32,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ focused }) => (
-            // <TabBarIcon name={focused ? 'home' : 'home-outline'} color={'#5de65d'} />
-            <View style={ focused ? { backgroundColor: 'red', width: 50, height: 50, borderRadius: 100, position: 'relative', top: -25, display: 'flex', alignSelf: 'center', alignItems: 'center', justifyContent: 'center' } : { backgroundColor: 'red', width: 50, height: 50, borderRadius: 100, display: 'flex', alignSelf: 'center', alignItems: 'center', justifyContent: 'center' }}>
-              <TabBarIcon name={'home'} color={'#5de65d'} size={35} style={{ marginBottom: 5 }}  />
-            </View>
+            focused ? <AnimatedNav focused={true} name={'home'} /> : <AnimatedNav focused={false} name={'home-outline'} />
           ),
         }}
       />
@@ -42,7 +41,7 @@ export default function TabLayout() {
         options={{
           title: 'Explore',
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={'#5de65d'} />
+            focused ? <AnimatedNavOne focused={true} name={'handshake-o'} /> : <AnimatedNavOne focused={false} name={'handshake-o'} />
           ),
         }}
       />
@@ -51,7 +50,7 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon name={focused ? 'people-sharp' : 'people-outline' } color={'#5de65d'} />
+            focused ? <AnimatedNavTwo focused={true} name={'account'} /> : <AnimatedNavTwo focused={false} name={'account-outline'} />
           ),
         }}
       />

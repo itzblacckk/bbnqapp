@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { EvilIcons } from '@expo/vector-icons';
-import { HoverEffect } from 'react-native-gesture-handler';
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { FontAwesome6 } from '@expo/vector-icons';
+// import { HoverEffect } from 'react-native-gesture-handler';
 
 const HomePage = () => {
   const router = useRouter();
   const [showSidebar, setShowSidebar] = useState(false);
-  const colorScheme = useColorScheme();
+
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
@@ -18,29 +16,32 @@ const HomePage = () => {
   const cards = [
     {
       id: 1,
-      imageUri: 'https://raw.githubusercontent.com/itzblacckk/myimgs/47499b8e2d4d80163761bf8bccc83e47e1f965a1/Rectangle%2016(1).svg',
+      imageUri: 'https://img.freepik.com/free-vector/graphic-design-geometric-wallpaper_52683-34399.jpg?size=626&ext=jpg&ga=GA1.1.1311217063.1713921632&semt=sph',
       title: 'Card 1 Title',
       content: 'Content for Card 1...',
     },
     {
       id: 2,
-      imageUri: 'https://raw.githubusercontent.com/itzblacckk/myimgs/47499b8e2d4d80163761bf8bccc83e47e1f965a1/Rectangle%2018.svg',
+      imageUri: 'https://img.freepik.com/free-vector/flat-design-polygonal-background_23-2148898663.jpg?w=1380&t=st=1716299695~exp=1716300295~hmac=e6d694d0658f8d880e304ff7887bf9bb448284614faf860f32172c39d6ed9110',
       title: 'Card 2 Title',
       content: 'Content for Card 2...',
     },
     {
       id: 3,
-      imageUri: 'https://raw.githubusercontent.com/itzblacckk/myimgs/00b28916d0474da7ff34bb01a7cb9201601c523d/Rectangle.svg',
+      imageUri: 'https://img.freepik.com/free-vector/flat-geometric-poster_1361-4216.jpg?w=1380&t=st=1716299744~exp=1716300344~hmac=2d63f00d0fdeb74e5e7ec32b43e7e3c1f0e1748087c2d0a41ea057073c4678f9',
       title: 'Card 3 Title',
       content: 'Content for Card 3...',
     },
+
   ];
 
   return (
-    <View style={styles.container}>
+    <View  style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={toggleSidebar} style={{ display: 'flex', alignContent: 'center', height: 40 }}>
-          <EvilIcons name="navicon" size={40} color="black" />
+        <TouchableOpacity onPress={toggleSidebar} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 40, width: 40, marginLeft: 0, }}>
+          {
+            showSidebar ? <FontAwesome6 name="0xmark" size={36} color="#00215e" /> : <EvilIcons name="navicon" size={40} color="#00215e" />
+          }
         </TouchableOpacity>
         <TouchableOpacity onPress={() => router.navigate('profile')}>
           <Image
@@ -66,17 +67,15 @@ const HomePage = () => {
       </ScrollView>
       {showSidebar && (
         <View style={styles.sidebar}>
-          <TouchableOpacity onPress={toggleSidebar} style={styles.closeButton}>
-            <EvilIcons name="close" size={40} color="black" />
-          </TouchableOpacity>
           <Image
             style={styles.sidebarImage}
-            source={{ uri: 'https://otakuusamagazine.com/wp-content/uploads/2023/02/eminenceseason2.jpg' }}
+            source={{uri: 'https://otakuusamagazine.com/wp-content/uploads/2023/02/eminenceseason2.jpg'}}
           />
-          <TouchableOpacity onPress={() => router.navigate('(tabs)/home')}>
+          <View style={styles.sidebarcontainer}>
+          <TouchableOpacity onPress={() => router.navigate('')}>
             <Text style={styles.sidebarItem}>Dashboard</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.navigate('../screens/Menu')}>
+          <TouchableOpacity onPress={() => router.navigate('Home')}>
             <Text style={styles.sidebarItem}>Menu</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => router.navigate('Home')}>
@@ -97,6 +96,7 @@ const HomePage = () => {
           <TouchableOpacity onPress={() => router.navigate('Settings')}>
             <Text style={styles.sidebarItem}>Help</Text>
           </TouchableOpacity>
+          </View>
         </View>
       )}
     </View>
@@ -106,17 +106,18 @@ const HomePage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    // backgroundColor: 'black',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
-    top: 20,
+    top:0,
+    zIndex: 100,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
-    backgroundColor: '#5de65d',
+    // backgroundColor: '#3a0089',
   },
   profileImage: {
     width: 40,
@@ -127,12 +128,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginLeft: 10,
-    color: 'green',
+    color: 'green', 
   },
   content: {
     justifyContent: 'center',
     alignItems: 'center',
-    gap: 10,
+    gap: 15,
   },
   title: {
     fontSize: 24,
@@ -146,7 +147,11 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     width: '90%',
-    height: '30%'
+    height: '30%',
+    shadowOffset: { width: 2.5, height: 2 },
+    shadowColor: '#000',
+    shadowRadius: 20,
+    shadowOpacity: 30,
   },
   cardImage: {
     width: '100%',
@@ -168,37 +173,43 @@ const styles = StyleSheet.create({
   },
   sidebar: {
     position: 'absolute',
-    top: 0,
+    top: 60,
     bottom: 0,
     left: 0,
-    width: '80%',
-    backgroundColor: '#5de65d',
-    zIndex: 1,
+    width: '80%', 
+    height: '95%',
+    backgroundColor: '#00215e', 
+    zIndex: 150,
     padding: 20,
-    display: 'flex',
-    alignContent: 'center',
-    justifyContent: 'space-between',
-  },
-  closeButton: {
-    alignSelf: 'flex-end',
-    marginBottom: 10,
+    paddingBottom: 40,
   },
   sidebarItem: {
     fontSize: 18,
     marginBottom: 10,
-    color: '#333',
+    color: '#333', 
     padding: 15,
     backgroundColor: 'lightgreen',
   },
   sidebarImage: {
-    width: 150,
-    height: 150,
-    marginBottom: 20,
-    borderRadius: 75,
+    width: 150, 
+    height: 150, 
+    marginBottom: 20, 
+    borderRadius: 75, 
+    display: 'flex',
+    alignSelf: 'center',
+    justifyContent: 'center',
+  },
+  sidebarcontainer: {
+    height: '70%',
     display: 'flex',
     alignContent: 'center',
-    justifyContent: 'center'
+    justifyContent: 'space-between',
+    gap: 10,
+    paddingVertical: 20,
+    borderRadius: 10,
+    overflow: 'scroll',
   },
 });
+
 
 export default HomePage;
