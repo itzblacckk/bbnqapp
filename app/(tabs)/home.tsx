@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { EvilIcons } from '@expo/vector-icons';
-import { HoverEffect } from 'react-native-gesture-handler';
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 const HomePage = () => {
@@ -73,30 +70,32 @@ const HomePage = () => {
             style={styles.sidebarImage}
             source={{ uri: 'https://otakuusamagazine.com/wp-content/uploads/2023/02/eminenceseason2.jpg' }}
           />
-          <TouchableOpacity onPress={() => router.navigate('(tabs)/home')}>
-            <Text style={styles.sidebarItem}>Dashboard</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.navigate('../screens/Menu')}>
-            <Text style={styles.sidebarItem}>Menu</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.navigate('Home')}>
-            <Text style={styles.sidebarItem}>Member Profile</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.navigate('Home')}>
-            <Text style={styles.sidebarItem}>Messages</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.navigate('Home')}>
-            <Text style={styles.sidebarItem}>Authentication</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.navigate('Home')}>
-            <Text style={styles.sidebarItem}>Receipt</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.navigate('About')}>
-            <Text style={styles.sidebarItem}>Components</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => router.navigate('Settings')}>
-            <Text style={styles.sidebarItem}>Help</Text>
-          </TouchableOpacity>
+          <ScrollView>
+            <TouchableOpacity onPress={() => router.navigate('(tabs)/home')}>
+              <Text style={styles.sidebarItem}>Dashboard</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => router.navigate('../screens/Menu')}>
+              <Text style={styles.sidebarItem}>Menu</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => router.navigate('Home')}>
+              <Text style={styles.sidebarItem}>Member Profile</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => router.navigate('Home')}>
+              <Text style={styles.sidebarItem}>Messages</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => router.navigate('Home')}>
+              <Text style={styles.sidebarItem}>Authentication</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => router.navigate('Home')}>
+              <Text style={styles.sidebarItem}>Receipt</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => router.navigate('About')}>
+              <Text style={styles.sidebarItem}>Components</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => router.navigate('Settings')}>
+              <Text style={styles.sidebarItem}>Help</Text>
+            </TouchableOpacity>
+          </ScrollView>
         </View>
       )}
     </View>
@@ -106,17 +105,20 @@ const HomePage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
+    marginTop: 15,
     top: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ccc',
-    backgroundColor: '#5de65d',
+    zIndex: 100,
+    shadowColor: '#000',
+    shadowOffset: { width: 2, height:2 },
+    shadowOpacity: 3,
+    shadowRadius: 8,
+    // backgroundColor: '#fff'
   },
   profileImage: {
     width: 40,
@@ -168,12 +170,12 @@ const styles = StyleSheet.create({
   },
   sidebar: {
     position: 'absolute',
-    top: 0,
+    top: 35,
     bottom: 0,
     left: 0,
+    zIndex: 100,
     width: '80%',
-    backgroundColor: '#5de65d',
-    zIndex: 1,
+    backgroundColor: '#2eaf7d',
     padding: 20,
     display: 'flex',
     alignContent: 'center',
@@ -182,13 +184,18 @@ const styles = StyleSheet.create({
   closeButton: {
     alignSelf: 'flex-end',
     marginBottom: 10,
+    fontSize: 20,
   },
   sidebarItem: {
     fontSize: 18,
     marginBottom: 10,
-    color: '#333',
+    color: '#fff',
     padding: 15,
-    backgroundColor: 'lightgreen',
+    backgroundColor: '#02353c',
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'flex-start',
+    borderRadius: 15,
   },
   sidebarImage: {
     width: 150,
@@ -196,8 +203,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderRadius: 75,
     display: 'flex',
-    alignContent: 'center',
+    alignSelf: 'center',
     justifyContent: 'center'
+  },
+  scrollbars: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignContent: 'center',
   },
 });
 

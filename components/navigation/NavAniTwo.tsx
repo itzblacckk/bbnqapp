@@ -12,7 +12,7 @@ export default function AnimatedNavTwo({ focused, name }: any) {
       height: 50,
       borderRadius: 100,
       borderWidth: 2,
-      borderColor: '#00215e',
+      borderColor: '#2eaf7d',
       position: 'relative',
       top: -25,
       display: 'flex',
@@ -21,7 +21,7 @@ export default function AnimatedNavTwo({ focused, name }: any) {
       justifyContent: 'center',
     },
     {
-      fgcolor: '#00215e',
+      fgcolor: '#2eaf7d',
     },
   ]
 

@@ -1,11 +1,9 @@
 import { Tabs } from 'expo-router';
 import React from 'react';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import AnimatedNav from '@/components/navigation/NavbarAnimated';
+
+import AnimatedTabBarIcon from '@/components/AnimatedTabBarIcon';
 import { Colors } from '@/constants/Colors';
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import AnimatedNavOne from '@/components/navigation/NavAniOne';
-import AnimatedNavTwo from '@/components/navigation/NavAniTwo';
+import { useColorScheme } from '@/hooks/useColorScheme';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -15,24 +13,12 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
-        tabBarShowLabel: false, 
-        tabBarStyle:{
-          height: 60,
-          // margin: 10,
-          // shadowOffset: { width: 0, height: 5 },
-          // shadowColor: '#000',
-          // shadowRadius: 10,
-          // shadowOpacity: 30,
-          backgroundColor: '#00215e', 
-          // '#4171ee',
-        } 
       }}>
       <Tabs.Screen
         name="home"
         options={{
           title: 'Home',
-          tabBarIcon: ({ focused }) => (
-            focused ? <AnimatedNav focused={true} name={'home'} /> : <AnimatedNav focused={false} name={'home-outline'} />
+          tabBarIcon: ({  }) => (
           ),
         }}
       />
@@ -40,17 +26,17 @@ export default function TabLayout() {
         name="explore"
         options={{
           title: 'Explore',
-          tabBarIcon: ({ focused }) => (
-            focused ? <AnimatedNavOne focused={true} name={'handshake-o'} /> : <AnimatedNavOne focused={false} name={'handshake-o'} />
+          tabBarIcon: ({ color, focused }) => (
+            <AnimatedTabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={'#5de65d'} focused={focused} />
           ),
         }}
       />
-            <Tabs.Screen
+      <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ focused }) => (
-            focused ? <AnimatedNavTwo focused={true} name={'account'} /> : <AnimatedNavTwo focused={false} name={'account-outline'} />
+          tabBarIcon: ({ color, focused }) => (
+            <AnimatedTabBarIcon name={focused ? 'people-sharp' : 'people-outline'} color={'#5de65d'} focused={focused} />
           ),
         }}
       />

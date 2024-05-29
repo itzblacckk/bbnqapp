@@ -1,24 +1,42 @@
-import React, { useEffect, useRef } from 'react';
-import { View, Text, Pressable, TouchableOpacity, StyleSheet, Animated, Image, ImageBackground } from 'react-native';
+import React from 'react';
+import { View, Text, Pressable, StyleSheet, Image } from 'react-native';
 import { useRouter } from 'expo-router';
+import './global.css';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const Index = () => {
+  
   const router = useRouter();
 
   return (
     <>
       <View style={styles.container}>
-      <Text style={styles.title}>Welcome To Home</Text>
-      <Image
-        resizeMode="cover"
-        source={require("../app/assets/group-35.png")}
-        style={styles.image}
-      />
-      <Pressable style={styles.button} onPress={() => router.navigate("login")}>
-        <Text style={styles.buttonText}>START</Text>
-      </Pressable>
-    </View>
+        <LinearGradient
+          colors={['#c1f6ed', '#2eaf7d']}
+
+          style={styles.inner}
+        >
+          <View style={styles.main}>
+            <View style={styles.circle}>
+              <Image
+                resizeMode="cover"
+                source={require("../app/assets/logo.png")}
+                style={styles.image}
+              />
+            </View>
+            <View style={styles.content}>
+              <Text style={styles.title}>Welcome To BBN Global</Text>
+              <Text style={styles.paragraph}>
+                We are delighted to have you join our dynamic community dedicated to empowering Brahman's
+              </Text>
+            </View>
+          </View>
+          <Pressable style={styles.button} onPress={()=>{ router.navigate('/login') }}>
+            <Text style={styles.buttonText}>START</Text>
+          </Pressable>
+        </LinearGradient>
+      </View>
     </>
   );
 };
@@ -30,29 +48,59 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#fff',
-    padding:60
+    backgroundColor: '',
+    padding: 0,
+  },
+  inner: {
+    flex: 1,
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    width: '100%',
+    // paddingVertical: 20,
+    // paddingBottom: 40,
+  },
+  main: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
+  },
+  paragraph: {
+    fontSize: 18,
+    marginVertical: 5,
+    textAlign: 'center',
+  },
+  content: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
   },
   image: {
     marginBottom: 20,
+    width: 160,
+    height: 160,
+    borderRadius: 30,
   },
   button: {
-    backgroundColor: 'black',
+    backgroundColor: '#02353c',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 10,
-   
-
   },
   buttonText: {
     color: '#fff',
     fontSize: 16,
-
+  },
+  circle: {
+    width: 160,
+    height: 160,
+    // backgroundColor: '#fff',
+    borderRadius: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 60,
   },
 });
 

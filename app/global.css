@@ -8,3 +8,8 @@
 	--primaryForeground: #c1f6ed;
 	--secondaryColor: #02353c;
 }
+
+.Button {
+	background: var(--primaryBackground);
+	color: var(--primaryForeground);
+}

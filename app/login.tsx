@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     borderRadius: 10,
     paddingHorizontal: 10,
-  
+   
   },
   icon: {
     width: 20,

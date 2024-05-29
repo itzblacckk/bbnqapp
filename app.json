@@ -3,6 +3,7 @@
     "name": "bbnqapp",
     "slug": "bbnqapp",
     "version": "1.0.0",
+    "proxy": "https://bbmoapp.bbnglobal.net",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -19,7 +20,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.shadosama.bbnqapp"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +33,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "f02f6559-f217-4b55-8e62-74d7faf968f0"
+      }
     }
   }
 }
